@@ -22,10 +22,11 @@ def day02():
 
     def is_safe(levels):
         sorted_levels = sorted(levels)
-        diff = [levels[i+1] - levels[i] for i in range(0, len(levels)-1)]
-        diff_abs = [abs(d) for d in diff]
-        safe = levels == sorted_levels or levels == list(reversed(sorted_levels))
-        return safe and min(diff_abs) >= 1 and max(diff_abs) <= 3
+        diff = [abs(levels[i+1] - levels[i]) for i in range(0, len(levels)-1)]
+        return (
+            (levels == sorted_levels or levels == list(reversed(sorted_levels)))
+            and (min(diff) >= 1 and max(diff) <= 3)
+        )
 
     with open("data/day02.txt") as infile:
         lines = infile.readlines()
