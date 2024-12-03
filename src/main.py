@@ -50,6 +50,33 @@ def day02():
                 break
     print(f"       | Part 2: {result}      | {'Correct' if result == 569 else 'Wrong'}")
     
+
+def day03():
+    import re
+
+    with open("data/day03_test.txt") as infile:
+        line = infile.read()
+
+    def mul(x,y): return x * y
+    result = 0
+    regex = "mul\([\s0-9]+,[\s0-9]+\)"
+    for match in re.findall( "mul\([\s0-9]+,[\s0-9]+\)", line):
+        result += eval(match)
+    print(result)
+
+    prev = 0
+    print(line)
+    for match in re.finditer(regex, line):
+        #result += eval(match)
+        start, end = match.start(0), match.end(0)
+        match = line[start:end]
+        upstream = line[prev:start]
+        print(match, start, end, upstream)
+        prev = end
+    print(result)
+
+
 if __name__ == "__main__":
-    day01()
-    day02()
+    #day01()
+    #day02()
+    day03()
