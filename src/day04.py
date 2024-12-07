@@ -33,7 +33,7 @@ def word_search_patterns(text):
         [f"{'.'*(len(text)-1-i)}{c}{'.'*i}" for i,c in enumerate(text[::-1])], # Diagonal
     ]
 
-def day04():
+async def day04():
     """The XMAX word search."""
 
     with open("data/day04.txt") as infile:

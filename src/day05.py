@@ -27,7 +27,7 @@ def fix_order(update, graph):
                 break
     return correct
 
-def day05():
+async def day05():
     from collections import OrderedDict
     import math
 
@@ -56,8 +56,8 @@ def day05():
             fixed = fix_order(update, graph)
             part2 += fixed[math.floor(len(fixed) / 2)]
 
-    print(f"Day 05 | Part 1: {part1} | {'Correct' if part1 == 5391 else 'Wrong'}")
-    print(f"       | Part 2: {part2} | {'Correct' if part2 == 6142 else 'Wrong'}")
+    print(f"Day 05 | Part 1: {part1}      | {'Correct' if part1 == 5391 else 'Wrong'}")
+    print(f"       | Part 2: {part2}      | {'Correct' if part2 == 6142 else 'Wrong'}")
 
 if __name__ == "__main__":
     day05()

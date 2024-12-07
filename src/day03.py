@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def day03():
+async def day03():
     import re
 
     with open("data/day03.txt") as infile:

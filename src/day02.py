@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def day02():
+async def day02():
     """Day 02: Detecting bad levels in the fusion plant."""
 
     def is_safe(levels):
