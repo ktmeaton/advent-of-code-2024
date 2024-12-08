@@ -17,4 +17,4 @@ async def day01():
     part2 = sum([c1*col2.count(c1) for c1 in col1])
     print(f"       | Part 2: {part2}  | {'Correct' if part2 == 21070419 else 'Wrong'}")
 
-    return(part1, part2)
+    return(part1, part2 )

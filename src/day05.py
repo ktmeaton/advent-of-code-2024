@@ -28,6 +28,7 @@ def fix_order(update, graph):
     return correct
 
 async def day05():
+    """ Printing pages in the correct order."""
     from collections import OrderedDict
     import math
 
