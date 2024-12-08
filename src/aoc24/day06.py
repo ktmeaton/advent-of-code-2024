@@ -13,7 +13,7 @@ def step_backward(x,y,d):
 def change_direction(d):
     return "right" if d == "up" else "down" if d == "right" else "left" if d == "down" else "up"
 
-def path_coords(x,y,d,grid):
+async def path_coords(x,y,d,grid):
     w,h = len(grid[0]), len(grid)
     if d == "right":
         coords = [(x1,y) for x1 in range(x+1,w)]
@@ -27,7 +27,7 @@ def path_coords(x,y,d,grid):
     path = "".join([grid[y][x] for x,y in coords])
     return(path, coords)
 
-def day06():
+async def day06():
     """Predicting a guard's patrol pattern."""
 
     from collections import OrderedDict
@@ -75,7 +75,7 @@ def day06():
         d = change_direction(d)
 
         # Check if the next travel path contains an obstacle
-        path, coords = path_coords(x,y,d,lines)
+        path, coords = await path_coords(x,y,d,lines)
         if "#" not in path: 
             lines[oby][obx] = "."
             continue
@@ -96,7 +96,7 @@ def day06():
             if len(coords) > 0:
                 x, y = coords[-1][0], coords[-1][1]
             d = change_direction(d)
-            path, coords = path_coords(x,y,d,lines)
+            path, coords = await path_coords(x,y,d,lines)
 
         # Reset the obstacle
         lines[oby][obx] = "."
@@ -105,4 +105,5 @@ def day06():
     print(f"       | Part 2: {part2}      | {'Correct' if part2 == 2165 else 'Wrong'}")
 
 if __name__ == "__main__":
-    day06()
+    import asyncio
+    asyncio.run(day06())

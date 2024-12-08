@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def check_order(update, graph):
+async def check_order(update, graph):
     correct = True
     for i in range(0, len(update)-1):
         page, next_page = update[i], update[i+1]
@@ -9,7 +9,7 @@ def check_order(update, graph):
             break
     return correct
 
-def fix_order(update, graph):
+async def fix_order(update, graph):
     correct = update[0:1]
     for page_u in update:
         if page_u in correct: continue
@@ -51,10 +51,10 @@ async def day05():
 
     incorrect = []
     for update in updates:
-        if check_order(update, graph):
+        if await check_order(update, graph):
             part1 += update[math.floor(len(update) / 2)]
         else:
-            fixed = fix_order(update, graph)
+            fixed = await fix_order(update, graph)
             part2 += fixed[math.floor(len(fixed) / 2)]
 
     print(f"Day 05 | Part 1: {part1}      | {'Correct' if part1 == 5391 else 'Wrong'}")

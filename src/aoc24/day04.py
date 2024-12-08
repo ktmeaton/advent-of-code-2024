@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def search(b, p, ignore="."):
+async def search(b, p, ignore="."):
     "Search a 2D buffer (b) for a 2D pattern (p)."
     coords, ignore_coords = [], []
     pw, ph, bw, bh = len(p[0]), len(p), len(b[0]), len(b)
@@ -20,7 +20,7 @@ def search(b, p, ignore="."):
             if ["".join(l) for  l in split] == p: coords.append((x,y)) 
     return coords
 
-def word_search_patterns(text):
+async def word_search_patterns(text):
     """Create all patterns of a text in a word search"""
     return [
         [text], # Forward
@@ -41,8 +41,8 @@ async def day04():
 
     # Part 1
     result = 0
-    for pattern in word_search_patterns("XMAS"):
-        matches = search(lines, pattern)
+    for pattern in await word_search_patterns("XMAS"):
+        matches = await search(lines, pattern)
         result += len(matches)
     print(f"Day 04 | Part 1: {result}      | {'Correct' if result == 2599 else 'Wrong'}")
 
@@ -50,6 +50,6 @@ async def day04():
     patterns = [["M.S", ".A.", "M.S"], ["S.M", ".A.", "S.M"], ["M.M", ".A.", "S.S"], ["S.S", ".A.", "M.M"]]
     result = 0
     for pattern in patterns:
-        matches = search(lines, pattern)
+        matches = await search(lines, pattern)
         result += len(matches)
     print(f"       | Part 2: {result}      | {'Correct' if result == 1948 else 'Wrong'}")
