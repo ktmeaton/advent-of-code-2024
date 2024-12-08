@@ -1,0 +1,11 @@
+[project]
+name = "aoc24"
+version = "0.1.0"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = []
+
+[project.scripts]
+aoc24 = "aoc24:cli"
