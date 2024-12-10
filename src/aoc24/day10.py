@@ -5,9 +5,6 @@ async def day10():
 
     w,h = len(lines[0]), len(lines)
 
-    # Locate trail heads
-    # Check all 4 directions for the next step
-
     def follow_paths(c, x, y, w, h, lines, final:int=9):
         paths = []
         if c == final:
@@ -34,14 +31,16 @@ async def day10():
         return paths
 
     part1 = 0
+    part2 = 0
+
     for y,line in enumerate(lines):
         for x,c in enumerate(line):
             if c != 0: continue
             paths = follow_paths(c, x, y, w, h, lines)
+            part2 += len(paths)
             unique_ends = set(p[-1] for p in paths)
             part1 += len(unique_ends)
 
     print(f"Day 10 | Part 1: {part1}      | {'Correct' if part1 == 1 else 'Wrong'}")
-    part2 = 0
     print(f"       | Part 2: {part2}      | {'Correct' if part2 == 1 else 'Wrong'}")
        
